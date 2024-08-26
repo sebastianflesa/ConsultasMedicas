@@ -1,0 +1,16 @@
+package com.example.demo.model;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@Data
+@NoArgsConstructor
+
+public class Medico {
+    private int id;
+    private String nombre;
+    private String apellido;
+    private String especialidad;
+
+}
