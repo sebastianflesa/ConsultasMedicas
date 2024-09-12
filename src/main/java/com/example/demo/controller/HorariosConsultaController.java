@@ -22,6 +22,26 @@ import com.example.demo.model.HorariosConsulta;
 public class HorariosConsultaController {
     @Autowired
     private HorariosConsultaService horariosService;
+    
+    @GetMapping("tomadas")
+    public List<HorariosConsulta> getAllHorasTomadas(){
+        return horariosService.getAllHorasTomadas();
+    }
+
+    @GetMapping("disponible/{fecha}")
+    public ResponseEntity<?> getDisponibleFecha(@PathVariable String fecha) {
+        List<LocalDateTime>  fechas = horariosService.getDisponibleFecha(fecha);
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("fechas_disponibles", fechas);
+        map.put("status", "200");
+        return ResponseEntity.status(200).body(map);
+        
+    }
+
+    /*
+    @Autowired
+    private HorariosConsultaService horariosService;
 
     @GetMapping("tomadas")
     public List<HorariosConsulta> getHorasTomadas() {
@@ -36,6 +56,7 @@ public class HorariosConsultaController {
         map.put("status", "200");
         return ResponseEntity.status(200).body(map);
     }
+    */
 
 
     
